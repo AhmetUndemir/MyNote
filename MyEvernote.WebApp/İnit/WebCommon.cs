@@ -17,7 +17,7 @@ namespace MyEvernote.WebApp.İnit
 				return user.Username;
 			}
 
-			return null;
+			return "system";
 		}
 	}
 }

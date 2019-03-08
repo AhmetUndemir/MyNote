@@ -127,11 +127,11 @@ namespace MyEvernote.WebApp.Controllers
 			return View();
 		}
 
-		public ActionResult UserActive(Guid activate_id)
+		public ActionResult UserActivate(Guid id)
 		{
 			//kullanıcı aktifleştirme
 			EvernoteUserManager eum = new EvernoteUserManager();
-			BusinessLayerResult<EvernoteUser> res = eum.ActivateUser(activate_id);
+			BusinessLayerResult<EvernoteUser> res = eum.ActivateUser(id);
 
 			if (res.Errors.Count > 0)
 			{
@@ -140,7 +140,7 @@ namespace MyEvernote.WebApp.Controllers
 			}
 
 
-			return View();
+			return RedirectToAction("UserActivateOK");
 		}
 
 		public ActionResult UserActivateOK()

@@ -53,10 +53,10 @@ namespace MyEvernote.BusinessLayer
 
 					//layerResult.Result.ActivateGuid
 					string siteUri = ConfigHelper.Get<string>("SiteRootUri");
-					string activateUri = $"{siteUri}/Home/UserActivate/{user.ActivateGuid}";
-					string body = $"Merhaba {user.Name} {user.Username} Hesabınızı aktifleştirmek için <a href'{activateUri}' target='_blank'>tıklayınız</a>";
+					string activateUri = $"{siteUri}/Home/UserActivate/{res.Result.ActivateGuid}";
+					string body = $"Merhaba {res.Result.Username} Hesabınızı aktifleştirmek için <a href='{activateUri}' target='_blank'>tıklayınız</a>";
 
-					MailHelper.SendMail(body,user.Email,"MyEvernote Hesap Aktifleştirme");
+					MailHelper.SendMail(body,res.Result.Email,"MyEvernote Hesap Aktifleştirme");
 
 				}
 			}
