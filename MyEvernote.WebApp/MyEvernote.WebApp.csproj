@@ -103,6 +103,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\user_boy.png" />
     <Content Include="index.html" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -147,6 +148,8 @@
     <Content Include="Views\Home\RegisterOk.cshtml" />
     <Content Include="Views\Home\UserActivateOK.cshtml" />
     <Content Include="Views\Home\UserActivateCancel.cshtml" />
+    <Content Include="Views\Home\ShowProfile.cshtml" />
+    <Content Include="Views\Home\EditProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

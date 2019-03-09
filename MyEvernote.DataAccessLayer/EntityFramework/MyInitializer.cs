@@ -14,33 +14,35 @@ namespace MyEvernote.DataAccessLayer.EntityFramework
 		{
 			EvernoteUser admin = new EvernoteUser()
 			{
-				Name = "Murat",
-				Surname = "Başeren",
-				Email = "kadirmuratbaseren@gmail.com",
+				Name = "Ahmet",
+				Surname = "Ündemir",
+				Email = "ahmetundemir@gmail.com",
 				ActivateGuid = Guid.NewGuid(),
 				IsActive = true,
 				IsAdmin = true,
-				Username = "muratbaseren",
+				Username = "ahmetundemir",
+				ProfileImageFilename = "user_boy.png",
 				Password = "123456",
 				CreatedOn = DateTime.Now,
 				ModifiedOn = DateTime.Now.AddMinutes(5),
-				ModifiedUsername = "muratbaseren"
+				ModifiedUsername = "ahmetundemir"
 			};
 
 			// Adding standart user..
 			EvernoteUser standartUser = new EvernoteUser()
 			{
-				Name = "Kadir",
-				Surname = "Başeren",
-				Email = "muratbaseren@gmail.com",
+				Name = "Ahmet",
+				Surname = "Ündemir",
+				Email = "ahmetundemirim@gmail.com",
 				ActivateGuid = Guid.NewGuid(),
 				IsActive = true,
 				IsAdmin = false,
-				Username = "kadirbaseren",
+				ProfileImageFilename = "user_boy.png",
+				Username = "ahmetundemirim",
 				Password = "654321",
 				CreatedOn = DateTime.Now.AddHours(1),
 				ModifiedOn = DateTime.Now.AddMinutes(65),
-				ModifiedUsername = "muratbaseren"
+				ModifiedUsername = "ahmetundemirim"
 			};
 
 			context.EvernoteUsers.Add(admin);
@@ -56,6 +58,7 @@ namespace MyEvernote.DataAccessLayer.EntityFramework
 					ActivateGuid = Guid.NewGuid(),
 					IsActive = true,
 					IsAdmin = false,
+					ProfileImageFilename = "user_boy.png",
 					Username = $"user{i}",
 					Password = "123",
 					CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
@@ -80,7 +83,7 @@ namespace MyEvernote.DataAccessLayer.EntityFramework
 					Description = FakeData.PlaceData.GetAddress(),
 					CreatedOn = DateTime.Now,
 					ModifiedOn = DateTime.Now,
-					ModifiedUsername = "muratbaseren"
+					ModifiedUsername = "ahmetundemir"
 				};
 
 				context.Categories.Add(cat);
