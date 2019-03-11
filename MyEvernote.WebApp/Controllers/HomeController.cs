@@ -2,6 +2,7 @@
 using MyEvernote.Entities;
 using MyEvernote.Entities.Messages;
 using MyEvernote.Entities.ValueObjects;
+using MyEvernote.WebApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,7 +71,7 @@ namespace MyEvernote.WebApp.Controllers
 
 			if (res.Errors.Count > 0)
 			{
-			  //hata sayfası
+				//hata sayfası
 			}
 
 			return View(res.Result);
@@ -91,6 +92,20 @@ namespace MyEvernote.WebApp.Controllers
 		{
 			return View();
 		}
+
+		public ActionResult TestNotify()
+		{
+			OkViewModel model = new OkViewModel()
+			{
+				Header = "Yönlendirme..",
+				Title = "OK Test",
+				RedirectingTimeout = 3000,
+				Items = new List<string>() { "Test Başarılı1,", "Test Başarılı2" }
+			};
+
+			return View("Ok", model);
+		}
+
 
 
 		public ActionResult Login()

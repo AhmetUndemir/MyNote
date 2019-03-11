@@ -1,6 +1,5 @@
 ﻿@using MyEvernote.WebApp.ViewModel
-@using MyEvernote.Entities.Messages
-@model  ErrorViewModel
+@model  WarningViewModel
 @{
 	ViewBag.Title = Model.Title;
 }
@@ -16,13 +15,13 @@
 			</div>
 			<div class="main-content">
 
-				<div class="text-danger">
-					<h2><span class="glyphicon glyphicon-remove-circle"> @Model.Title</span></h2>
+				<div class="text-warning">
+					<h2><span class="glyphicon glyphicon-warning-sign"> @Model.Title</span></h2>
 					<hr />
 					<p class="text-justify">
-						@foreach (ErrorMessageObj msg in Model.Items)
+						@foreach (string msg in Model.Items)
 						{
-							@msg.Message <br />
+							@msg <br />
 						}
 					</p>
 				</div>

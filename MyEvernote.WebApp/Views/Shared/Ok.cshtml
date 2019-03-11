@@ -1,6 +1,5 @@
 ﻿@using MyEvernote.WebApp.ViewModel
-@using MyEvernote.Entities.Messages
-@model  ErrorViewModel
+@model  OkViewModel
 @{
 	ViewBag.Title = Model.Title;
 }
@@ -16,13 +15,13 @@
 			</div>
 			<div class="main-content">
 
-				<div class="text-danger">
-					<h2><span class="glyphicon glyphicon-remove-circle"> @Model.Title</span></h2>
+				<div class="text-success">
+					<h2><span class="glyphicon glyphicon-ok-circle"> @Model.Title</span></h2>
 					<hr />
 					<p class="text-justify">
-						@foreach (ErrorMessageObj msg in Model.Items)
+						@foreach (string msg in Model.Items)
 						{
-							@msg.Message <br />
+							@msg <br />
 						}
 					</p>
 				</div>
@@ -32,12 +31,12 @@
 		</div>
 	</div>
 </section>
-@{
+@{ 
 	string js = string.Empty;
 
 	if (Model.IsRedirecting)
 	{
-		js = "setTimeout(function () { window.location.href =  '" + Model.RedirectingUrl + "'}, " + Model.RedirectingTimeout + ");";
+		js = "setTimeout(function () { window.location.href =  '"+ Model.RedirectingUrl + "'}, " + Model.RedirectingTimeout + ");";
 	}
 }
 <script>
