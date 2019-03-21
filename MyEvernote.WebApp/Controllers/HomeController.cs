@@ -71,7 +71,13 @@ namespace MyEvernote.WebApp.Controllers
 
 			if (res.Errors.Count > 0)
 			{
-				//hata sayfası
+				ErrorViewModel ErrornotifyObj = new ErrorViewModel()
+				{
+					Title = "Hata oluştu",
+					Items = res.Errors
+				};
+
+				return View("Error", ErrornotifyObj);
 			}
 
 			return View(res.Result);
@@ -152,6 +158,8 @@ namespace MyEvernote.WebApp.Controllers
 		{
 			if (ModelState.IsValid)
 			{
+
+
 				EvernoteUserManager eum = new EvernoteUserManager();
 				BusinessLayerResult<EvernoteUser> res = eum.RegisterUser(model);
 				if (res.Errors.Count > 0)
@@ -161,18 +169,22 @@ namespace MyEvernote.WebApp.Controllers
 					return View(model);
 				}
 
+				OkViewModel notifyObj = new OkViewModel()
+				{
+					Title = "Kayıt Başarılı",
+					RedirectingUrl = "/Home/Login",
+					
+				};
+				notifyObj.Items.Add("Lütfen e-posta adresinize gönderdiğimiz aktivasyon link'ine tıklayarak hesabınızı aktive ediniz.<br />Hesabınızı aktive etmeden not ekleyemez ve beğenme yapamazsınız");
 
-				return RedirectToAction("RegisterOk");
+				return View("Ok", notifyObj);
 
 			}
 
 			return View(model);
 		}
 
-		public ActionResult RegisterOk()
-		{
-			return View();
-		}
+		
 
 		public ActionResult UserActivate(Guid id)
 		{
@@ -182,31 +194,27 @@ namespace MyEvernote.WebApp.Controllers
 
 			if (res.Errors.Count > 0)
 			{
-				TempData["errors"] = res.Errors;
-				return RedirectToAction("UserActivateCancel");
+				ErrorViewModel ErrornotifyObj = new ErrorViewModel()
+				{
+					Title = "Geçersiz İşlem",
+					Items = res.Errors
+				};
+				
+
+				return View("Error", ErrornotifyObj );
 			}
 
-
-			return RedirectToAction("UserActivateOK");
-		}
-
-		public ActionResult UserActivateOK()
-		{
-
-			return View();
-		}
-
-		public ActionResult UserActivateCancel()
-		{
-			List<ErrorMessageObj> errors = null;
-
-			if (TempData["errors"] != null)
+			OkViewModel oknotifyObj = new OkViewModel()
 			{
-				errors = TempData["errors"] as List<ErrorMessageObj>;
-			}
+				Title = "Hesap Aktilştirildi",
+				RedirectingUrl = "/Home/Login"
+			};
+			oknotifyObj.Items.Add("Hesabınız Aktifleştirildi. Artık not paylaşabilir ve beğenme yapabilirsiniz");
 
-			return View(errors);
+			return RedirectToAction("Ok",oknotifyObj);
 		}
+
+		
 
 		public ActionResult Logout()
 		{
